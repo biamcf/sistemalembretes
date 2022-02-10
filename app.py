@@ -1,5 +1,5 @@
+from cgitb import text
 from tkinter import *
-
 from black import Line
 
 class Application(Frame):
@@ -24,14 +24,23 @@ class Application(Frame):
         self.input_date = Entry(self.container1)
         self.input_date.grid(column=1, row=1, sticky=(E, W))
 
-        self.label_text = Label(self.container1, text="Text:")
-        self.label_date.grid(column=0, row=2, sticky=(N, S, E, W))
+        self.label_reminder = Label(self.container1, text="Reminder:")
+        self.label_reminder.grid(column=0, row=2, sticky=(N, S, E, W))
 
-        self.input_text = Entry(self.container1)
-        self.input_text.grid(column=1, row=2, sticky=(E, W))
+        self.input_reminder = Entry(self.container1)
+        self.input_reminder.grid(column=1, row=2, sticky=(E, W))
 
-         
-        
+        self.label_concluded = Label(self.container1, text="Did you complete this reminder? ")
+        self.label_concluded.grid(column=0, row=3, sticky=(N, S, E, W))
+
+        self.concluded = StringVar()
+        self.concluded.set("No")
+
+        concluded_option = Radiobutton(self.container1, text="Yes", variable=self.concluded, value="Yes")
+        not_completed_option = Radiobutton(self.container1, text="No", variable=self.concluded, value="No")
+
+        concluded_option.grid(column=1, row=3, sticky=(W))
+        not_completed_option.grid(column=1, row=3, sticky=(E))
 
         for child in self.container1.winfo_children(): 
             child.grid_configure(padx=3, pady=3)
