@@ -18,6 +18,21 @@ class Application(Frame):
         self.button_search_id["command"] = self.search_id
         self.button_search_id.grid(column=3, row=0, sticky=(N, S , E, W))
 
+        self.label_date = Label(self.container1, text="Date:")
+        self.label_date.grid(column=0, row=1, sticky=(N, S, E, W))
+
+        self.input_date = Entry(self.container1)
+        self.input_date.grid(column=1, row=1, sticky=(E, W))
+
+        self.label_text = Label(self.container1, text="Text:")
+        self.label_date.grid(column=0, row=2, sticky=(N, S, E, W))
+
+        self.input_text = Entry(self.container1)
+        self.input_text.grid(column=1, row=2, sticky=(E, W))
+
+         
+        
+
         for child in self.container1.winfo_children(): 
             child.grid_configure(padx=3, pady=3)
 
