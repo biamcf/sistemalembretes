@@ -1,6 +1,6 @@
 from database import Database
 
-class reminder(object):
+class reminders(object):
     def __init__(self, id_reminder = 0, date_reminder = '', text_reminder = '', status_reminder = ''):
         self.info = {}
         self.id_reminder = id_reminder
@@ -14,7 +14,7 @@ class reminder(object):
         try:
             c = db.connection.cursor()
             c.execute("""
-    INSERT INTO contacts (date_reminder, text_reminder, status_reminder) VALUES (?, ?, ?)""",
+    INSERT INTO reminders (date_reminder, text_reminder, status_reminder) VALUES (?, ?, ?)""",
     (self.name, self.number, self.email))
 
             db.connection.commit()
@@ -29,7 +29,7 @@ class reminder(object):
         try:
             c = db.connection.cursor()
             c.execute("""
-            UPDATE contacts
+            UPDATE reminders
             SET name = (?), number = (?), email = (?)
             WHERE id = (?)""",
         (self.name, self.number, self.email, self.idContact))
@@ -59,7 +59,7 @@ class reminder(object):
         try:
             c = db.connection.cursor()
             c.execute("""
-        SELECT * FROM contacts WHERE id=?;
+        SELECT * FROM reminders WHERE id=?;
         """, (self.id_reminder))
 
             for row in c.fetchall():
