@@ -42,6 +42,18 @@ class Application(Frame):
         concluded_option.grid(column=1, row=3, sticky=(W))
         not_completed_option.grid(column=1, row=3, sticky=(E))
 
+        insert_button = Button(self.container1, text="Insert")
+        insert_button.grid(column=0, row=4, sticky=(W))
+
+        update_button = Button(self.container1, text="Update")
+        update_button.grid(column=0, row=4, sticky=(E))
+
+        delete_button = Button(self.container1, text="Delete")
+        delete_button.grid(column=1, row=4, sticky=(E))
+
+        list_reminders_button = Button(self.container1, text="List all reminders")
+        list_reminders_button.grid(column=0, row=5, sticky=(N, S, E, W))
+
         for child in self.container1.winfo_children(): 
             child.grid_configure(padx=3, pady=3)
 
