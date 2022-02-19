@@ -67,9 +67,9 @@ class reminders(object):
                 self.text_reminder = row[2]
                 self.status_reminder = row[3]
 
-            return 'Reminder search performed successfully.'
+            return "Reminder search performed successfully."
         except:
-            return 'Reminder search error.'
+            return "Reminder search error."
 
 
 
