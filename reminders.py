@@ -15,7 +15,7 @@ class reminders(object):
             c = db.connection.cursor()
             c.execute("""
     INSERT INTO reminders (date_reminder, text_reminder, status_reminder) VALUES (?, ?, ?)""",
-    (self.name, self.number, self.email))
+    (self.date_reminder, self.text_reminder, self.status_reminder))
 
             db.connection.commit()
             c.close()
@@ -30,9 +30,9 @@ class reminders(object):
             c = db.connection.cursor()
             c.execute("""
             UPDATE reminders
-            SET name = (?), number = (?), email = (?)
-            WHERE id = (?)""",
-        (self.name, self.number, self.email, self.idContact))
+            SET date_reminder = (?), text_reminder = (?), status_reminder = (?)
+            WHERE id_reminder = (?)""",
+        (self.date_reminder, self.text_reminder, self.status_reminder, self.id_reminder))
 
             db.connection.commit()
             c.close()
@@ -46,7 +46,7 @@ class reminders(object):
 
         try:
             c = db.connection.cursor()
-            c.execute("""DELETE FROM reminders WHERE id = (?)""", (self.id_reminder))
+            c.execute("""DELETE FROM reminders WHERE id_reminder = (?)""", (self.id_reminder))
             db.connection.commit()
             c.close()
             return 'Reminder successfully deleted.'
@@ -59,7 +59,7 @@ class reminders(object):
         try:
             c = db.connection.cursor()
             c.execute("""
-        SELECT * FROM reminders WHERE id=?;
+        SELECT * FROM reminders WHERE id_reminder=?;
         """, (self.id_reminder))
 
             for row in c.fetchall():
